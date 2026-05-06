@@ -22,6 +22,3 @@ env/
 .DS_Store
 Thumbs.db
 
-# ML model files (optional)
-*.pkl
-*.joblib
