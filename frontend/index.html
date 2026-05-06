@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediPredict – AI Disease Prediction</title>
+  <meta name="description" content="AI-powered disease prediction based on symptoms. Enter your symptoms and get an instant diagnosis prediction with confidence score." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Animated background blobs ── -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🧬</span>
+      <span class="logo-text">MediPredict</span>
+    </div>
+    <div class="header-badge">AI Powered · v1.0</div>
+  </header>
+
+  <!-- ── Main content ── -->
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="hero-title">AI Disease <span class="gradient-text">Prediction</span></h1>
+      <p class="hero-sub">Select or search your symptoms below and let our trained Random Forest model predict the most likely disease instantly.</p>
+    </section>
+
+    <!-- Search bar -->
+    <section class="search-section card">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="symptom-search"
+          class="search-input"
+          placeholder="Search symptoms… e.g. fever, headache, nausea"
+          autocomplete="off"
+        />
+        <button class="clear-btn" id="clear-search" title="Clear search">✕</button>
+      </div>
+
+      <!-- Selected pills -->
+      <div class="selected-pills" id="selected-pills">
+        <span class="pills-label">Selected symptoms:</span>
+        <div class="pills-container" id="pills-container">
+          <span class="no-pills-text">None selected</span>
+        </div>
+      </div>
+
+      <!-- Symptom grid -->
+      <div class="symptoms-grid" id="symptoms-grid">
+        <div class="loading-symptoms">
+          <div class="spinner"></div>
+          <span>Loading symptoms…</span>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <span class="selected-count" id="selected-count">0 symptoms selected</span>
+        <div class="action-btns">
+          <button class="btn btn-ghost" id="clear-all-btn">Clear All</button>
+          <button class="btn btn-primary" id="predict-btn">
+            <span class="btn-text">Predict Disease</span>
+            <span class="btn-loader hidden"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Validation error -->
+      <div class="error-banner hidden" id="error-banner">
+        <span>⚠️</span>
+        <span id="error-msg">Please select at least one symptom.</span>
+      </div>
+    </section>
+
+    <!-- Result card -->
+    <section class="result-section hidden" id="result-section">
+      <div class="result-card card">
+        <div class="result-header">
+          <div class="result-icon-wrap">
+            <span class="result-icon">🏥</span>
+          </div>
+          <div>
+            <p class="result-label">Predicted Condition</p>
+            <h2 class="result-disease" id="result-disease">–</h2>
+          </div>
+        </div>
+
+        <div class="confidence-block">
+          <div class="confidence-labels">
+            <span>Confidence</span>
+            <span class="confidence-pct" id="confidence-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="top3-block">
+          <p class="top3-title">Top Predictions</p>
+          <div class="top3-list" id="top3-list"></div>
+        </div>
+
+        <p class="disclaimer">⚕️ This is an AI-based prediction for informational purposes only. Always consult a qualified healthcare professional.</p>
+
+        <button class="btn btn-outline" id="predict-again-btn">← Predict Again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <p>Built with Random Forest · scikit-learn · Flask · ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
